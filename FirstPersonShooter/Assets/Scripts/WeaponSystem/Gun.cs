@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun : Weapon
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnEquipWeapon()
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnReload()
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnShoot()
+    {
+        throw new System.NotImplementedException();
     }
 }
