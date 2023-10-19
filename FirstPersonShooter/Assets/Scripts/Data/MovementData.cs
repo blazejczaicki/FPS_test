@@ -7,4 +7,5 @@ using UnityEngine;
 public class MovementData 
 {
     public float speed;
+    public float jumpSpeed;
 }

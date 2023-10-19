@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputAdapter : IMovementAdapter
+public class PlayerInputAdapter : IMovementInput
 {
     private Controls _controls;
 
@@ -23,27 +24,30 @@ public class PlayerInputAdapter : IMovementAdapter
         }
     }
 
+    public Action JumpPressed { get; set; }
+    public Action JumpReleased { get; set; }
 
     public PlayerInputAdapter(Controls controls)
     {
         _controls = controls;
 
-        Init();
-    }
-
-    private void Init()
-    {
         _controls.Player.Jump.started += OnJump;
         _controls.Player.Jump.canceled += OnJump;
-        _controls.Player.Jump.started += OnCrouch;
-        _controls.Player.Jump.canceled += OnCrouch;
-        _controls.Player.Jump.started += OnRun;
-        _controls.Player.Jump.canceled += OnRun;
+        //_controls.Player.Crouch.started += OnCrouch;
+        //_controls.Player.Crouch.canceled += OnCrouch;
+        //_controls.Player.Run.started += OnRun;
+        //_controls.Player.Run.canceled += OnRun;
+    }
+
+    ~PlayerInputAdapter()
+    {
+        _controls.Player.Jump.started -= OnJump;
+        _controls.Player.Jump.canceled -= OnJump;
     }
 
     private void OnJump(InputAction.CallbackContext context)
     {
-
+        OnInvoke(context, JumpPressed, JumpReleased);
     }
 
     private void OnCrouch(InputAction.CallbackContext context)
@@ -53,6 +57,18 @@ public class PlayerInputAdapter : IMovementAdapter
 
     private void OnRun(InputAction.CallbackContext context)
     {
+        //OnInvoke( context, inputEvent);
+    }
 
+    private void OnInvoke(InputAction.CallbackContext context, Action pressedEvent, Action releasedEvent)
+    {
+        if (context.started)
+        {
+            pressedEvent?.Invoke();
+        }
+        else if (context.canceled)
+        {
+            releasedEvent?.Invoke();
+        }
     }
 }

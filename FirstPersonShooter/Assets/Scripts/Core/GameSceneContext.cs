@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameSceneContext : SceneContext
 {
-    public static IMovementAdapter MovementAdapter;
+    public static IMovementInput
+        MovementAdapter;
 
     public override void InstallContext()
     {

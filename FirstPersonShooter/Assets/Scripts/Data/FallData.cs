@@ -6,5 +6,6 @@ using UnityEngine;
 [Serializable]
 public class FallData
 {
-    
+    public float gravity;
+    public float drag;
 }

@@ -18,7 +18,13 @@ MonoBehaviour:
     maxAngle: 90
   <WalkData>k__BackingField:
     speed: 10
+    jumpSpeed: 15
   <RunData>k__BackingField:
     speed: 20
+    jumpSpeed: 15
   <CrouchData>k__BackingField:
     speed: 5
+    jumpSpeed: 15
+  <FallData>k__BackingField:
+    gravity: 0.1
+    drag: 0

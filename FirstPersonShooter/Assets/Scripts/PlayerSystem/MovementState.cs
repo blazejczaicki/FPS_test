@@ -50,4 +50,9 @@ public class MovementState : State
         _playerMovement.CharacterController.transform.rotation *=  Quaternion.Euler(0f, horizontalRotation, 0f);
         _playerMovement.CameraPivot.transform.localRotation =  Quaternion.Euler(_playerMovement.verticalAngle, 0f, 0f);
     }
+
+    protected virtual bool IsGrounded()
+    {
+        return _playerMovement.CharacterController.isGrounded;
+    }
 }

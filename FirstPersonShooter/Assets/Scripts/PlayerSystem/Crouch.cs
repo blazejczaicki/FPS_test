@@ -2,29 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crouch : MovementState
+public class Crouch : Walk
 {
     public Crouch(StateMachine stateMachine) : base(stateMachine)
     {
+        _speed = _playerMovement.MovementSettings.CrouchData.speed;
     }
 
     public override void CheckChangeState()
     {
-        throw new System.NotImplementedException();
-    }
+        if (IsGrounded() == false)
+        {
+            _playerMovement.ChangeState(_playerMovement.States[MovementStates.Fall]);
+        }
 
-    public override void OnEnter()
-    {
-        throw new System.NotImplementedException();
-    }
+        if (IsGrounded() == false)
+        {
+            _playerMovement.ChangeState(_playerMovement.States[MovementStates.Walk]);
+        }
 
-    public override void OnExit()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnUpdate()
-    {
-        throw new System.NotImplementedException();
+        if (IsGrounded() == false)
+        {
+            _playerMovement.ChangeState(_playerMovement.States[MovementStates.Run]);
+        }
     }
 }
