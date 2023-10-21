@@ -5,24 +5,26 @@ using UnityEngine;
 
 public abstract class DamagableObject : MonoBehaviour
 {
-    [field: SerializeField] protected DamagableObjectData DamagableObjectData {  get; private set; }
+    [field: SerializeField] public DamagableObjectData DamagableObjectData {  get; private set; }
 
-    public event Action<DamagableObjectData> ObjectDestroy;
-    public event Action<DamagableObjectData> ObjectHit;
+    public event Action<DamagableObject> ObjectDestroy;
+    public event Action<DamagableObject> ObjectHit;
 
-    public int CurrentHealth { get; protected set; }
+    public int CurrentHealth { get; set; }
+    public bool IsDestroyed { get; set; }
 
     private void Awake()
     {
         CurrentHealth = DamagableObjectData.health;
+        IsDestroyed = false;
     }
 
-    public virtual void OnObjectHit(WeaponData weaponData)
+    public virtual void OnObjectHit(HitData hitData)
     {
-        ObjectHit?.Invoke(DamagableObjectData);
+        ObjectHit?.Invoke(this);
     }
     protected virtual void OnObjectDestroy()
     {
-        ObjectDestroy?.Invoke(DamagableObjectData);
+        ObjectDestroy?.Invoke(this);
     }
 }

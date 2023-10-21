@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3616683057901101598}
   - component: {fileID: 3616683057901101599}
   - component: {fileID: 3616683057901101596}
+  - component: {fileID: 7866521596271657807}
   m_Layer: 0
   m_Name: SteelBox
   m_TagString: Untagged
@@ -61,6 +62,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DamagableObjectData>k__BackingField: {fileID: 11400000, guid: 642ecdd177eedc94da8f25da2f3a72eb,
     type: 2}
+--- !u!114 &7866521596271657807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3616683057901101601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f8cf1d38b56c140bcb6d38393ec092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destroyEffect: {fileID: 19800008, guid: 1dbc518224e49f34095aab42fe05751a, type: 3}
+  _destroySound: {fileID: 8300000, guid: c0ead6792c7e07a40b9678dfcbcc00bc, type: 3}
 --- !u!1001 &3616683057540725149
 PrefabInstance:
   m_ObjectHideFlags: 0

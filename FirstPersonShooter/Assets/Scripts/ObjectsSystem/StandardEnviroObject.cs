@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class StandardEnviroObject : DamagableObject
 {
-    public override void OnObjectHit(WeaponData weaponData)
+    public override void OnObjectHit(HitData hitData)
     {
-        base.OnObjectHit(weaponData);
+        base.OnObjectHit(hitData);
 
-        if (weaponData.goodAgainst.Contains(DamagableObjectData.physicalMaterial))
+        if (hitData.goodAgainst.Contains(DamagableObjectData.physicalMaterial))
         {
-            CurrentHealth -= weaponData.damage;
-            Debug.Log(CurrentHealth);
-            if (CurrentHealth <= 0)
+            CurrentHealth -= hitData.damage;
+            if (CurrentHealth <= 0 && IsDestroyed==false)
             {
-                Debug.Log("BOOM!");
                 OnObjectDestroy();
+                IsDestroyed = true;
             }
         }
     }

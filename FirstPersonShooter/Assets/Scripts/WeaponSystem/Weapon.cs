@@ -7,6 +7,12 @@ public abstract class Weapon : MonoBehaviour
     [field: SerializeField] protected WeaponData WeaponData {get; private set;}
 
     public IWeaponInput WeaponInput { get; set; }
+    public HitData HitData { get; set; }
+
+    private void Awake()
+    {
+        HitData=new HitData();
+    }
 
     public abstract void OnEnter();
     public abstract void OnUpdate();

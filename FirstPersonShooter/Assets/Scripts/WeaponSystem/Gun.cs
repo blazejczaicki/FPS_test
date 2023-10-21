@@ -52,7 +52,11 @@ public class Gun : Weapon
         {
             Debug.DrawRay(Muzzle.transform.position, Muzzle.transform.forward * WeaponData.range, Color.green, 0.1f);
             var damagableObject = hit.transform.GetComponent<DamagableObject>();
-            damagableObject?.OnObjectHit(WeaponData);
+
+            HitData.damage = WeaponData.damage;
+            HitData.goodAgainst = WeaponData.goodAgainst;
+
+            damagableObject?.OnObjectHit(HitData);
         }
     }
 

@@ -5,11 +5,14 @@ using UnityEngine;
 public class GameSceneContext : SceneContext
 {
     [SerializeField] private SimpleWeaponInventory _weaponInventory;
+    [SerializeField] private AudioManager _audioManager;
     private PlayerInputAdapter _playerInputAdapter;
 
     public static IWeaponInventory WeaponInventory;
     public static IMovementInput MovementInput;
     public static IWeaponInput WeaponInput;
+
+    public static AudioManager AudioManager;
 
     public override void InstallContext()
     {
@@ -21,6 +24,8 @@ public class GameSceneContext : SceneContext
         WeaponInput = _playerInputAdapter;
 
         WeaponInventory= _weaponInventory;
+
+        AudioManager = _audioManager;
     }
 
     public override void DisposeContext()
@@ -29,5 +34,7 @@ public class GameSceneContext : SceneContext
         MovementInput = null;
         WeaponInput = null;
         WeaponInventory= null;
+
+        AudioManager = null;
     }
 }

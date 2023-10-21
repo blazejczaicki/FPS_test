@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2095741991121743667}
   - component: {fileID: 2095741991121743661}
   - component: {fileID: 2095741991121743660}
+  - component: {fileID: 1390517660008992266}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -62,6 +63,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DamagableObjectData>k__BackingField: {fileID: 11400000, guid: b4b16e9aa26d63f4cba9639b88ad65fc,
     type: 2}
+--- !u!114 &1390517660008992266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095741991121743666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f8cf1d38b56c140bcb6d38393ec092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destroyEffect: {fileID: 19800006, guid: 2e7e92bc7175b744ea40878dedfa79e4, type: 3}
+  _destroySound: {fileID: 8300000, guid: c0ead6792c7e07a40b9678dfcbcc00bc, type: 3}
 --- !u!1001 &2095741991768428078
 PrefabInstance:
   m_ObjectHideFlags: 0
