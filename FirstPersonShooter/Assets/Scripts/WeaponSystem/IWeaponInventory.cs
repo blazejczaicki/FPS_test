@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IWeaponInventory
 {
-    public Weapon GetWeapon(int index);
+    public int GetWeaponCount();
+    public Weapon GetWeapon(int index);    
+    public void ReturnWeapon(Weapon weapon);    
 }

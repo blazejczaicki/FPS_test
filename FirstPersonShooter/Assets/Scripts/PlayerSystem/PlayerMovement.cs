@@ -22,7 +22,7 @@ public class PlayerMovement : StateMachine
         CharacterController = GetComponent<CharacterController>();
         velocity = Vector3.zero;
 
-        MovementInput = GameSceneContext.MovementAdapter;
+        MovementInput = GameSceneContext.MovementInput;
         InitStates();
         
     }

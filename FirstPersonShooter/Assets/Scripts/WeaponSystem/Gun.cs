@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Gun : Weapon
 {
-    public override void OnEquipWeapon()
+    public override void OnEnter()
     {
-        throw new System.NotImplementedException();
+
     }
 
-    public override void OnReload()
+    public override void OnExit()
     {
-        throw new System.NotImplementedException();
     }
 
-    public override void OnShoot()
+    public override void OnUpdate()
     {
-        throw new System.NotImplementedException();
     }
 }

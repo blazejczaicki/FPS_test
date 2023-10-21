@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd39a9529755634eaf1d4364e841e28, type: 3}
-  m_Name: MachineGun
+  m_Name: Pistol
   m_EditorClassIdentifier: 
-  damage: 0
-  attackSpeed: 0
-  goodAgainst: 0000000001000000
+  weaponName: M1911
+  damage: 20
+  attackSpeed: 3
+  goodAgainst: 00000000

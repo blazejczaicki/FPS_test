@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class GameSceneContext : SceneContext
 {
-    public static IMovementInput
-        MovementAdapter;
+    [SerializeField] private SimpleWeaponInventory _weaponInventory;
+    private PlayerInputAdapter _playerInputAdapter;
+
+    public static IWeaponInventory WeaponInventory;
+    public static IMovementInput MovementInput;
+    public static IWeaponInput WeaponInput;
 
     public override void InstallContext()
     {
         ProjectContext.InputManager.ToggleActionMap(ProjectContext.InputManager.Controls.Player);
 
-        MovementAdapter = new PlayerInputAdapter(ProjectContext.InputManager.Controls);
+        _playerInputAdapter = new PlayerInputAdapter(ProjectContext.InputManager.Controls);
+
+        MovementInput = _playerInputAdapter;
+        WeaponInput = _playerInputAdapter;
+
+        WeaponInventory= _weaponInventory;
     }
 
     public override void DisposeContext()
     {
+        _playerInputAdapter = null;
+        MovementInput = null;
+        WeaponInput = null;
+        WeaponInventory= null;
     }
 }

@@ -5,5 +5,7 @@ using UnityEngine;
 public enum ObjectPhysicalMaterials
 {
     wood,
-    steel
+    lightSteel,
+    steel,
+    armouredSteel
 }

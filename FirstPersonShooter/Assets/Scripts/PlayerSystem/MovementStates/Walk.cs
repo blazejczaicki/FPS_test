@@ -65,7 +65,6 @@ public class Walk : MovementState
     {
         Vector2 movementInput= _playerMovement.MovementInput.Move * _speed;
         Vector3 movementVector = _playerMovement.velocity;
-        Debug.Log(movementVector);
         movementVector = _playerMovement.CharacterController.transform.forward * movementInput.y;
         movementVector += _playerMovement.CharacterController.transform.right * movementInput.x;
         movementVector = new Vector3(movementVector.x, _jumpVelocity - defaultGravity, movementVector.z);

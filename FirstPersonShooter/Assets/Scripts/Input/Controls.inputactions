@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInput",
+    "name": "Controls",
     "maps": [
         {
             "name": "Player",
@@ -42,10 +42,10 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChangeGun",
+                    "name": "ChangeWeapon",
                     "type": "Value",
                     "id": "4d8b4891-72b5-4779-a5cf-32a780cd18a0",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -286,11 +286,11 @@
                 {
                     "name": "",
                     "id": "ee4d034f-98ee-4167-8cef-295d88efe061",
-                    "path": "<Mouse>/middleButton",
+                    "path": "<Mouse>/scroll",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "ChangeGun",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ChangeWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
