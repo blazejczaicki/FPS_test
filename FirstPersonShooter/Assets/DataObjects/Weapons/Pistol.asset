@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponName: M1911
+  ammo: 20
   damage: 20
-  attackSpeed: 3
+  firePerMinute: 180
+  range: 200
+  reloadingTime: 0
+  puttingOnTime: 0
   goodAgainst: 00000000

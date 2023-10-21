@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd39a9529755634eaf1d4364e841e28, type: 3}
-  m_Name: MachineGun
+  m_Script: {fileID: 11500000, guid: 9256ae4dbc31e8c4b9a6b382e159155e, type: 3}
+  m_Name: Box
   m_EditorClassIdentifier: 
-  weaponName: M249
-  ammo: 200
-  damage: 40
-  firePerMinute: 900
-  range: 600
-  reloadingTime: 0
-  puttingOnTime: 0
-  goodAgainst: 0000000001000000
+  objectName: Box
+  health: 100
+  physicalMaterial: 0

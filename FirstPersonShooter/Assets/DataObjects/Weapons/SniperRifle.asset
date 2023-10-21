@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: SniperRifle
   m_EditorClassIdentifier: 
   weaponName: M107
-  damage: 100
-  attackSpeed: 1
+  ammo: 10
+  damage: 50
+  firePerMinute: 60
+  range: 1500
+  reloadingTime: 0
+  puttingOnTime: 0
   goodAgainst: 000000000100000002000000

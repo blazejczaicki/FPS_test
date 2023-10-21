@@ -27,7 +27,7 @@ public class PlayerInputAdapter : IMovementInput, IWeaponInput
 
     public Action JumpPressed { get; set; }
     public Action JumpReleased { get; set; }
-    public Action FirePerformed { get; set; }
+    public Action FireStarted { get; set; }
     public Action FireReleased { get; set; }
     public Action ChangeWeapon { get; set; }
 
@@ -74,7 +74,7 @@ public class PlayerInputAdapter : IMovementInput, IWeaponInput
 
     private void OnFire(InputAction.CallbackContext context)
     {
-        OnInvoke(context, FirePerformed, FireReleased);
+        OnInvoke(context, FireStarted, FireReleased);
     }
 
     private void OnChangeGun(InputAction.CallbackContext context)

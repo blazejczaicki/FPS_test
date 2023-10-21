@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamagableObjectData : MonoBehaviour
+[CreateAssetMenu(fileName = "DamagableObjectData", menuName = "ScriptableObjects/DamagableObjectData")]
+public class DamagableObjectData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] public string objectName;
+    [SerializeField] public int health;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] public ObjectPhysicalMaterials physicalMaterial;
 }

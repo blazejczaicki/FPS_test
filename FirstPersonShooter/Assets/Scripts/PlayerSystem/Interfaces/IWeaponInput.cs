@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface IWeaponInput
 {
-    public Action FirePerformed { get; set; }
+    public Action FireStarted { get; set; }
     public Action FireReleased { get; set; }
     public Action ChangeWeapon { get; set; }
 }
