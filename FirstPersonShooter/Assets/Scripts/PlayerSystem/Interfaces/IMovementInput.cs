@@ -10,4 +10,9 @@ public interface IMovementInput
 
     public Action JumpPressed { get; set; }
     public Action JumpReleased { get; set; }
+
+    public Action RunPressed { get; set; }
+    public Action RunReleased { get; set; }
+    public Action CrouchPressed { get; set; }
+    public Action CrouchReleased { get; set; }
 }

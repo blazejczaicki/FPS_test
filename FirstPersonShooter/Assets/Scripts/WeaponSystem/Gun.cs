@@ -5,6 +5,10 @@ using UnityEngine;
 public class Gun : Weapon
 {
     [field: SerializeField] protected Transform Muzzle { get; private set; }
+    [field: SerializeField] protected MuzzleFlash MuzzleFlash { get; private set; }
+
+
+    protected Camera _camera;
 
     protected float _lastShotTime;
 
@@ -14,10 +18,14 @@ public class Gun : Weapon
 
     public override void OnEnter()
     {
+        GameSceneContext.SimpleWeaponInfo.SetInfo(WeaponData.goodAgainstMaterial);
+
         _lastShotTime=0;
 
         _isPuttingOn = true;
         _isLoaded = true;
+
+        _camera = GameSceneContext.PlayerCamera;
 
         gameObject.SetActive(true);
         WeaponInput.FireStarted += OnStartFire;
@@ -26,6 +34,7 @@ public class Gun : Weapon
 
     public override void OnExit()
     {
+        gameObject.SetActive(false);
         WeaponInput.FireStarted -= OnStartFire;
         WeaponInput.FireReleased -= OReleasedFire;
     }
@@ -40,24 +49,40 @@ public class Gun : Weapon
     {
         if (_isTriggered && _isPuttingOn && _isLoaded && _lastShotTime>1f/(WeaponData.firePerMinute/60f))
         {
+            MuzzleFlash.Activate();
             _lastShotTime = 0;
             Shoot();
         }
     }
 
-    protected void Shoot()//layery
+    protected void Shoot()
     {
+        GameSceneContext.AudioManager.PlaySound(WeaponData.fireClip, Muzzle.transform.position);
+        
         RaycastHit hit;
-        if (Physics.Raycast(Muzzle.transform.position, Muzzle.transform.forward, out hit, WeaponData.range))
+        if (Physics.Raycast(Muzzle.transform.position, GetFireDirection(), out hit, WeaponData.range, LayerMask))
         {
-            Debug.DrawRay(Muzzle.transform.position, Muzzle.transform.forward * WeaponData.range, Color.green, 0.1f);
+            OnHit(hit.point);
+            Debug.DrawRay(Muzzle.transform.position, GetFireDirection() * WeaponData.range, Color.green, 0.1f);
             var damagableObject = hit.transform.GetComponent<DamagableObject>();
 
             HitData.damage = WeaponData.damage;
-            HitData.goodAgainst = WeaponData.goodAgainst;
+            HitData.goodAgainst = WeaponData.goodAgainstMaterial;
 
             damagableObject?.OnObjectHit(HitData);
         }
+    }
+
+    protected virtual Vector3 GetFireDirection()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask))
+        {
+            var hitPos = hit.point;
+            return (hitPos - Muzzle.transform.position ).normalized;
+        }
+        return Muzzle.transform.forward;
     }
 
     protected void OnStartFire()
@@ -67,6 +92,7 @@ public class Gun : Weapon
 
     protected void OReleasedFire()
     {
+        MuzzleFlash.Deactive();
         _isTriggered=false;
     }
 }

@@ -48,11 +48,15 @@ public class Walk : MovementState
     public override void OnEnter()
     {
         _playerMovement.MovementInput.JumpPressed += OnJumpPressed;
+        _playerMovement.MovementInput.RunPressed += OnRunPressed;
+        _playerMovement.MovementInput.CrouchPressed += OnCrouchPressed;
     }
 
     public override void OnExit()
     {
         _playerMovement.MovementInput.JumpPressed -= OnJumpPressed;
+        _playerMovement.MovementInput.RunPressed -= OnRunPressed;
+        _playerMovement.MovementInput.CrouchPressed -= OnCrouchPressed;
     }
 
     public override void OnUpdate()

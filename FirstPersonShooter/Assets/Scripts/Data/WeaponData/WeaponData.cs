@@ -6,13 +6,12 @@ using UnityEngine;
 public class WeaponData : ScriptableObject
 {
     [SerializeField] public string weaponName;
+    [SerializeField] public AudioClip fireClip;
     [SerializeField] public int ammo;
     [SerializeField] public int damage;
     [SerializeField] public float firePerMinute;
     [SerializeField] public float range;
-    [SerializeField] public float reloadingTime;
-    [SerializeField] public float puttingOnTime;
     
 
-    [SerializeField] public List<ObjectPhysicalMaterials> goodAgainst;
+    [SerializeField] public List<ObjectPhysicalMaterials> goodAgainstMaterial;
 }

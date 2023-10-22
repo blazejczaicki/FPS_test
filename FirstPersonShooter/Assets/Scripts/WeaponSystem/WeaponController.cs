@@ -5,10 +5,13 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] private Transform _weaponHolder;
+    [SerializeField] private LayerMask _layerMask;
+
+    public Weapon CurrentWeapon { get; private set; }
 
     private IWeaponInventory _weaponsInventory;
     private IWeaponInput _weaponInput;
-    private Weapon _currentWeapon;
+    
     private int _maxWeaponIndex;
     private int _weaponIndex;
 
@@ -33,28 +36,29 @@ public class WeaponController : MonoBehaviour
 
     private void Update()
     {
-        _currentWeapon?.OnUpdate();
+        CurrentWeapon?.OnUpdate();
     }
 
     public void ChangeWeapon()
     {
-        _currentWeapon?.OnExit();
+        CurrentWeapon?.OnExit();
 
         _weaponIndex = _weaponIndex + 1>=_maxWeaponIndex ? 0 : _weaponIndex + 1;
 
-        _weaponsInventory.ReturnWeapon(_currentWeapon);
-        _currentWeapon = _weaponsInventory.GetWeapon(_weaponIndex);
+        _weaponsInventory.ReturnWeapon(CurrentWeapon);
+        CurrentWeapon = _weaponsInventory.GetWeapon(_weaponIndex);
         SetWeapon();
     }
 
     public void SetWeapon()
     {
-        if (_currentWeapon != null)
+        if (CurrentWeapon != null)
         {
-            _currentWeapon.transform.SetParent(_weaponHolder, false);
+            CurrentWeapon.transform.SetParent(_weaponHolder, false);
             //_currentWeapon.transform.position = Vector3.zero;
-            _currentWeapon.WeaponInput = _weaponInput;
-            _currentWeapon.OnEnter();
+            CurrentWeapon.WeaponInput = _weaponInput;
+            CurrentWeapon.LayerMask = _layerMask;
+            CurrentWeapon.OnEnter();
         }
     }
 }

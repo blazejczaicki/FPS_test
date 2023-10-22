@@ -7,6 +7,7 @@ using static UnityEditor.VersionControl.Asset;
 public class PlayerMovement : StateMachine
 {
     [field: SerializeField] public Transform CameraPivot { get; private set; }
+    [field: SerializeField] public Transform PlayerMesh { get; private set; }
     [field: SerializeField] public MovementSettings MovementSettings { get; private set; }
     public CharacterController CharacterController { get; protected set; }
     public Dictionary<MovementStates, MovementState> States { get; protected set; }

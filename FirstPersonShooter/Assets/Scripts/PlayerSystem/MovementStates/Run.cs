@@ -9,21 +9,28 @@ public class Run : Walk
         _speed = _playerMovement.MovementSettings.RunData.speed;
     }
 
+    public override void OnEnter()
+    {
+        _playerMovement.MovementInput.JumpPressed += OnJumpPressed;
+        _playerMovement.MovementInput.RunReleased += OnRunReleased;
+    }
+
+    public override void OnExit()
+    {
+        _playerMovement.MovementInput.JumpPressed -= OnJumpPressed;
+        _playerMovement.MovementInput.RunReleased -= OnRunReleased;
+    }
+
+    protected virtual void OnRunReleased()
+    {
+        _playerMovement.ChangeState(_playerMovement.States[MovementStates.Walk]);
+    }
+
     public override void CheckChangeState()
     {
         if (IsGrounded() == false)
         {
             _playerMovement.ChangeState(_playerMovement.States[MovementStates.Fall]);
-        }
-
-        if (IsGrounded() == false)
-        {
-            _playerMovement.ChangeState(_playerMovement.States[MovementStates.Walk]);
-        }
-
-        if (IsGrounded() == false)
-        {
-            _playerMovement.ChangeState(_playerMovement.States[MovementStates.Crouch]);
         }
     }
 }

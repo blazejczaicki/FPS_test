@@ -30,6 +30,10 @@ public class PlayerInputAdapter : IMovementInput, IWeaponInput
     public Action FireStarted { get; set; }
     public Action FireReleased { get; set; }
     public Action ChangeWeapon { get; set; }
+    public Action RunPressed { get; set; }
+    public Action RunReleased { get; set; }
+    public Action CrouchPressed { get; set; }
+    public Action CrouchReleased { get; set; }
 
     public PlayerInputAdapter(Controls controls)
     {
@@ -38,10 +42,10 @@ public class PlayerInputAdapter : IMovementInput, IWeaponInput
 
         _controls.Player.Jump.started += OnJump;
         _controls.Player.Jump.canceled += OnJump;
-        //_controls.Player.Crouch.started += OnCrouch;
-        //_controls.Player.Crouch.canceled += OnCrouch;
-        //_controls.Player.Run.started += OnRun;
-        //_controls.Player.Run.canceled += OnRun;
+        _controls.Player.Crouch.started += OnCrouch;
+        _controls.Player.Crouch.canceled += OnCrouch;
+        _controls.Player.Run.started += OnRun;
+        _controls.Player.Run.canceled += OnRun;
 
         _controls.Player.Fire.started += OnFire;
         _controls.Player.Fire.canceled += OnFire;
@@ -54,6 +58,10 @@ public class PlayerInputAdapter : IMovementInput, IWeaponInput
         _controls.Player.Jump.canceled -= OnJump;
         _controls.Player.Fire.started -= OnFire;
         _controls.Player.Fire.canceled -= OnFire;
+        _controls.Player.Crouch.started -= OnCrouch;
+        _controls.Player.Crouch.canceled -= OnCrouch;
+        _controls.Player.Run.started -= OnRun;
+        _controls.Player.Run.canceled -= OnRun;
         _controls.Player.ChangeWeapon.performed -= OnChangeGun;
     }
 
@@ -64,12 +72,12 @@ public class PlayerInputAdapter : IMovementInput, IWeaponInput
 
     private void OnCrouch(InputAction.CallbackContext context)
     {
-
+        OnInvoke(context, CrouchPressed, CrouchReleased);
     }
 
     private void OnRun(InputAction.CallbackContext context)
     {
-        //OnInvoke( context, inputEvent);
+        OnInvoke(context, RunPressed, RunReleased);
     }
 
     private void OnFire(InputAction.CallbackContext context)
