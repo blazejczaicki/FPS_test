@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: MachineGun
   m_EditorClassIdentifier: 
   weaponName: M249
+  fireClip: {fileID: 8300000, guid: fd3277acbc60fc145aacec9caa12956e, type: 3}
   ammo: 200
   damage: 40
   firePerMinute: 900
   range: 600
   reloadingTime: 0
   puttingOnTime: 0
-  goodAgainst: 0000000001000000
+  goodAgainstMaterial: 000000000100000002000000
