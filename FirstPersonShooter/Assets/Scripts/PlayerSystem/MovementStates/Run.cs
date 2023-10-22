@@ -25,12 +25,4 @@ public class Run : Walk
     {
         _playerMovement.ChangeState(_playerMovement.States[MovementStates.Walk]);
     }
-
-    public override void CheckChangeState()
-    {
-        if (IsGrounded() == false)
-        {
-            _playerMovement.ChangeState(_playerMovement.States[MovementStates.Fall]);
-        }
-    }
 }

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Box
   health: 100
-  physicalMaterial: 0
+  physicalMaterial: 1

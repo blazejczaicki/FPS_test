@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Container
   health: 300
-  physicalMaterial: 2
+  physicalMaterial: 3

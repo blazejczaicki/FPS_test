@@ -8,7 +8,7 @@ public class StandardEnviroObject : DamagableObject
     {
         base.OnObjectHit(hitData);
 
-        if (hitData.goodAgainst.Contains(DamagableObjectData.physicalMaterial))
+        if (hitData.goodAgainstMaterials.Contains(DamagableObjectData.physicalMaterial))
         {
             CurrentHealth -= hitData.damage;
             if (CurrentHealth <= 0 && IsDestroyed==false)

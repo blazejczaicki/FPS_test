@@ -9,23 +9,14 @@ public class Gun : Weapon
 
 
     protected Camera _camera;
-
     protected float _lastShotTime;
-
     protected bool _isTriggered;
-    protected bool _isPuttingOn;
-    protected bool _isLoaded;
 
     public override void OnEnter()
     {
         GameSceneContext.SimpleWeaponInfo.SetInfo(WeaponData.goodAgainstMaterial);
-
-        _lastShotTime=0;
-
-        _isPuttingOn = true;
-        _isLoaded = true;
-
         _camera = GameSceneContext.PlayerCamera;
+        _lastShotTime =0;       
 
         gameObject.SetActive(true);
         WeaponInput.FireStarted += OnStartFire;
@@ -47,9 +38,8 @@ public class Gun : Weapon
 
     protected void TryShoot()
     {
-        if (_isTriggered && _isPuttingOn && _isLoaded && _lastShotTime>1f/(WeaponData.firePerMinute/60f))
-        {
-            MuzzleFlash.Activate();
+        if (_isTriggered && _lastShotTime>1f/(WeaponData.firePerMinute/60f))
+        {            
             _lastShotTime = 0;
             Shoot();
         }
@@ -57,19 +47,25 @@ public class Gun : Weapon
 
     protected void Shoot()
     {
+        MuzzleFlash.Activate();
         GameSceneContext.AudioManager.PlaySound(WeaponData.fireClip, Muzzle.transform.position);
         
         RaycastHit hit;
         if (Physics.Raycast(Muzzle.transform.position, GetFireDirection(), out hit, WeaponData.range, LayerMask))
-        {
-            OnHit(hit.point);
-            Debug.DrawRay(Muzzle.transform.position, GetFireDirection() * WeaponData.range, Color.green, 0.1f);
+        {            
+            //Debug.DrawRay(Muzzle.transform.position, GetFireDirection() * WeaponData.range, Color.green, 0.1f);
             var damagableObject = hit.transform.GetComponent<DamagableObject>();
-
-            HitData.damage = WeaponData.damage;
-            HitData.goodAgainst = WeaponData.goodAgainstMaterial;
-
-            damagableObject?.OnObjectHit(HitData);
+            if (damagableObject != null)
+            {
+                HitData.damage = WeaponData.damage;
+                HitData.goodAgainstMaterials = WeaponData.goodAgainstMaterial;
+                OnHit(hit.point, damagableObject.DamagableObjectData.physicalMaterial);
+                damagableObject?.OnObjectHit(HitData);
+            }
+            else
+            {
+                OnHit(hit.point, ObjectPhysicalMaterials.None);
+            }            
         }
     }
 
@@ -92,7 +88,6 @@ public class Gun : Weapon
 
     protected void OReleasedFire()
     {
-        MuzzleFlash.Deactive();
         _isTriggered=false;
     }
 }

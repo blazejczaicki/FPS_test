@@ -14,10 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: M107
   fireClip: {fileID: 8300000, guid: ff1dced09cf2a97438087a157008ede2, type: 3}
-  ammo: 10
   damage: 100
   firePerMinute: 60
   range: 1500
-  reloadingTime: 0
-  puttingOnTime: 0
-  goodAgainstMaterial: 00000000010000000200000003000000
+  goodAgainstMaterial: 01000000020000000300000004000000

@@ -19,6 +19,21 @@ public class Walk : MovementState
         _jumpSpeed = _playerMovement.MovementSettings.WalkData.jumpSpeed;
     }
 
+    public override void OnEnter()
+    {
+        _playerMovement.MovementInput.JumpPressed += OnJumpPressed;
+        _playerMovement.MovementInput.RunPressed += OnRunPressed;
+        _playerMovement.MovementInput.CrouchPressed += OnCrouchPressed;
+    }
+
+    public override void OnExit()
+    {
+        _playerMovement.MovementInput.JumpPressed -= OnJumpPressed;
+        _playerMovement.MovementInput.RunPressed -= OnRunPressed;
+        _playerMovement.MovementInput.CrouchPressed -= OnCrouchPressed;
+    }
+
+
     protected virtual void OnJumpPressed()
     {
         if (IsGrounded())
@@ -43,20 +58,6 @@ public class Walk : MovementState
         {
             _playerMovement.ChangeState(_playerMovement.States[MovementStates.Fall]);
         }
-    }
-
-    public override void OnEnter()
-    {
-        _playerMovement.MovementInput.JumpPressed += OnJumpPressed;
-        _playerMovement.MovementInput.RunPressed += OnRunPressed;
-        _playerMovement.MovementInput.CrouchPressed += OnCrouchPressed;
-    }
-
-    public override void OnExit()
-    {
-        _playerMovement.MovementInput.JumpPressed -= OnJumpPressed;
-        _playerMovement.MovementInput.RunPressed -= OnRunPressed;
-        _playerMovement.MovementInput.CrouchPressed -= OnCrouchPressed;
     }
 
     public override void OnUpdate()

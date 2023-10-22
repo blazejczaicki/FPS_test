@@ -14,10 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: M1911
   fireClip: {fileID: 8300000, guid: ca91e743acf03a146ac96115740eb1c3, type: 3}
-  ammo: 20
   damage: 20
   firePerMinute: 180
   range: 200
-  reloadingTime: 0
-  puttingOnTime: 0
-  goodAgainstMaterial: 0000000001000000
+  goodAgainstMaterial: 0100000002000000

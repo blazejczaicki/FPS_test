@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class HitData
 {
-     public List<ObjectPhysicalMaterials> goodAgainst { get; set; }
+     public List<ObjectPhysicalMaterials> goodAgainstMaterials { get; set; }
      public int damage { get; set; }
 }

@@ -13,7 +13,6 @@ public class UI_SimpleWeaponInfo : MonoBehaviour
         foreach (ObjectPhysicalMaterials mat in mats) 
         {
             txt += mat.ToString() + "\n";
-            Debug.Log(txt);
         }
         m_TextMeshPro.text = txt;
     }

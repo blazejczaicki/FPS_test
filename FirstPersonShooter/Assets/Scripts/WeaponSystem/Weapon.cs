@@ -12,7 +12,7 @@ public abstract class Weapon : MonoBehaviour
 
     public LayerMask LayerMask { get; set; }
 
-    public event Action<Vector3> Hit;
+    public event Action<Vector3, ObjectPhysicalMaterials> Hit;
 
     private void Awake()
     {
@@ -23,9 +23,9 @@ public abstract class Weapon : MonoBehaviour
     public abstract void OnUpdate();
     public abstract void OnExit();
 
-    public virtual void OnHit(Vector3 hitPos)
+    public virtual void OnHit(Vector3 hitPos, ObjectPhysicalMaterials material)
     {
-        Hit?.Invoke(hitPos);
+        Hit?.Invoke(hitPos, material);
     }
 
 }

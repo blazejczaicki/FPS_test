@@ -13,14 +13,6 @@ public class Fall : MovementState
         drag = _playerMovement.MovementSettings.FallData.drag;
     }
 
-    public override void CheckChangeState()
-    {
-        if (IsGrounded())
-        {
-            _playerMovement.ChangeState(_playerMovement.States[MovementStates.Walk]);
-        }
-    }
-
     public override void OnEnter()
     {
     }
@@ -30,6 +22,15 @@ public class Fall : MovementState
         _playerMovement.velocity = Vector3.zero;
     }
 
+    public override void CheckChangeState()
+    {
+        if (IsGrounded())
+        {
+            _playerMovement.ChangeState(_playerMovement.States[MovementStates.Walk]);
+        }
+    }
+
+
     public override void OnUpdate()
     {
         base.OnUpdate();
@@ -38,8 +39,6 @@ public class Fall : MovementState
 
     protected void UpdateFall()
     {
-        //float x = Mathf.Lerp(_playerMovement.velocity.x, 0, drag);
-        //float z = Mathf.Lerp(_playerMovement.velocity.z, 0, drag);
         float x = _playerMovement.velocity.x;
         float z = _playerMovement.velocity.z;
         Vector3 movementVector = new Vector3( x, _playerMovement.velocity.y - gravity, z);

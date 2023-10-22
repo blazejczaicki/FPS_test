@@ -11,7 +11,7 @@ public enum MovementStates
     Fall
 }
 
-public class MovementState : State
+public abstract class MovementState : State
 {
     protected PlayerMovement _playerMovement;
     protected CameraMovementData _cameraData;
@@ -21,18 +21,6 @@ public class MovementState : State
     {
         _playerMovement = stateMachine as PlayerMovement;
         _cameraData = _playerMovement.MovementSettings.CameraData;
-    }
-
-    public override void CheckChangeState()
-    {
-    }
-
-    public override void OnEnter()
-    {
-    }
-
-    public override void OnExit()
-    {
     }
 
     public override void OnUpdate()

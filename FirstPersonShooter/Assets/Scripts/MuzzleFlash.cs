@@ -6,26 +6,17 @@ public class MuzzleFlash : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _muzzleEffect;
 
-    private bool _isActive;
-
     private void Awake()
     {
-        Deactive();
+        _muzzleEffect.gameObject.SetActive(true);
     }
 
     public void Activate()
     {
-        if (_isActive == false)
+        if (_muzzleEffect.isPlaying ==false)
         {
-            _muzzleEffect.gameObject.SetActive(true);
             _muzzleEffect.Play();
-            _isActive = true;
         }        
     }
 
-    public void Deactive()
-    {
-        _muzzleEffect.gameObject?.SetActive(false);
-        _isActive = false;
-    }
 }

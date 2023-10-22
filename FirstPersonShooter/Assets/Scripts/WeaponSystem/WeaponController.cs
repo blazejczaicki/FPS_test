@@ -55,7 +55,6 @@ public class WeaponController : MonoBehaviour
         if (CurrentWeapon != null)
         {
             CurrentWeapon.transform.SetParent(_weaponHolder, false);
-            //_currentWeapon.transform.position = Vector3.zero;
             CurrentWeapon.WeaponInput = _weaponInput;
             CurrentWeapon.LayerMask = _layerMask;
             CurrentWeapon.OnEnter();
