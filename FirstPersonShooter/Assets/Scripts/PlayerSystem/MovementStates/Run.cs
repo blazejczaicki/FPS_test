@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Run : Walk
 {
     public Run(StateMachine stateMachine) : base(stateMachine)
     {
+        //StateName = MovementStates.Run;
+
         _speed = _playerMovement.MovementSettings.RunData.speed;
     }
 

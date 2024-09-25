@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.VersionControl.Asset;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : StateMachine
@@ -9,12 +7,15 @@ public class PlayerMovement : StateMachine
     [field: SerializeField] public Transform CameraPivot { get; private set; }
     [field: SerializeField] public Transform PlayerMesh { get; private set; }
     [field: SerializeField] public MovementSettings MovementSettings { get; private set; }
+
+    [field: SerializeField] public HeadbobEffect HeadbobEffect { get; private set; }
+    [field: SerializeField] public WeaponSwayEffect WeaponSwayEffect { get; private set; }
+
     public CharacterController CharacterController { get; protected set; }
     public Dictionary<MovementStates, MovementState> States { get; protected set; }
-    public IMovementInput MovementInput { get; protected set; }    
+    public IMovementInput MovementInput { get; protected set; }
     public float verticalAngle { get; set; }
     public Vector3 velocity { get; set; }
-
 
 
     private void Awake()
@@ -25,8 +26,9 @@ public class PlayerMovement : StateMachine
 
         MovementInput = GameSceneContext.MovementInput;
         InitStates();
-        
+
     }
+
 
     protected void InitStates()
     {

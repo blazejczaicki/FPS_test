@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Crouch : Walk
@@ -9,6 +7,8 @@ public class Crouch : Walk
 
     public Crouch(StateMachine stateMachine) : base(stateMachine)
     {
+        //StateName = MovementStates.Crouch;
+
         _speed = _playerMovement.MovementSettings.CrouchData.speed;
         _jumpSpeed = _playerMovement.MovementSettings.CrouchData.jumpSpeed;
         crouchHeight = _playerMovement.MovementSettings.CrouchData.crouchHeight;
@@ -50,7 +50,7 @@ public class Crouch : Walk
 
     protected virtual void OnCrouchReleased()
     {
-        
+
         _playerMovement.ChangeState(_playerMovement.States[MovementStates.Walk]);
     }
 

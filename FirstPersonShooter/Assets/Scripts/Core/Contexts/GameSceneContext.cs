@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameSceneContext : SceneContext
@@ -8,6 +6,7 @@ public class GameSceneContext : SceneContext
     [SerializeField] private AudioManager _audioManager;
     [SerializeField] private Camera _playerCamera;
     [SerializeField] private UI_SimpleWeaponInfo _simpleWeaponInfo;
+    [SerializeField] private PlayerMovement _playerMovement;
     private PlayerInputAdapter _playerInputAdapter;
 
     public static IWeaponInventory WeaponInventory;
@@ -17,6 +16,7 @@ public class GameSceneContext : SceneContext
     public static AudioManager AudioManager;
     public static Camera PlayerCamera;
     public static UI_SimpleWeaponInfo SimpleWeaponInfo;
+    public static PlayerMovement PlayerMovement;
 
     public override void InstallContext()
     {
@@ -27,12 +27,13 @@ public class GameSceneContext : SceneContext
         MovementInput = _playerInputAdapter;
         WeaponInput = _playerInputAdapter;
 
-        WeaponInventory= _weaponInventory;
+        WeaponInventory = _weaponInventory;
 
         AudioManager = _audioManager;
         PlayerCamera = _playerCamera;
 
         SimpleWeaponInfo = _simpleWeaponInfo;
+        PlayerMovement = _playerMovement;
     }
 
     public override void DisposeContext()
@@ -40,10 +41,11 @@ public class GameSceneContext : SceneContext
         _playerInputAdapter = null;
         MovementInput = null;
         WeaponInput = null;
-        WeaponInventory= null;
+        WeaponInventory = null;
 
         AudioManager = null;
         PlayerCamera = null;
-        SimpleWeaponInfo= null;
+        SimpleWeaponInfo = null;
+        PlayerMovement = null;
     }
 }

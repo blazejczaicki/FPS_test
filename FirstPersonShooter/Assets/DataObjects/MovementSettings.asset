@@ -27,5 +27,5 @@ MonoBehaviour:
     jumpSpeed: 8
     crouchHeight: 1
   <FallData>k__BackingField:
-    gravity: 0.1
+    gravity: 50
     drag: 0

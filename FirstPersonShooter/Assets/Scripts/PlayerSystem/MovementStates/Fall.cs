@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Fall : MovementState
@@ -9,6 +7,8 @@ public class Fall : MovementState
 
     public Fall(StateMachine stateMachine) : base(stateMachine)
     {
+        //StateName = MovementStates.Fall;
+
         gravity = _playerMovement.MovementSettings.FallData.gravity;
         drag = _playerMovement.MovementSettings.FallData.drag;
     }
@@ -41,9 +41,9 @@ public class Fall : MovementState
     {
         float x = _playerMovement.velocity.x;
         float z = _playerMovement.velocity.z;
-        Vector3 movementVector = new Vector3( x, _playerMovement.velocity.y - gravity, z);
+        Vector3 movementVector = new Vector3(x, _playerMovement.velocity.y - gravity * Time.deltaTime, z);
 
-        _playerMovement.velocity=movementVector;
+        _playerMovement.velocity = movementVector;
         _playerMovement.CharacterController.Move(movementVector * Time.deltaTime);
     }
 }
