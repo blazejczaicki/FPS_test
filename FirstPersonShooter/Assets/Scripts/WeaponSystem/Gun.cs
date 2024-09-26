@@ -5,6 +5,8 @@ public class Gun : Weapon
     [field: SerializeField] protected Transform Muzzle { get; private set; }
     [field: SerializeField] protected MuzzleFlash MuzzleFlash { get; private set; }
     [field: SerializeField] protected WeaponRecoilEffect RecoilEffect { get; private set; }
+    [field: SerializeField] protected ParticleSystem BulletCasingsEffect { get; private set; }
+    [field: SerializeField] protected ParticleSystem ShootTrailEffect { get; private set; }
 
 
     protected Camera _camera;
@@ -49,6 +51,8 @@ public class Gun : Weapon
         MuzzleFlash.Activate();
         RecoilEffect.Recoil();
         GameSceneContext.AudioManager.PlaySound(WeaponData.fireClip, Muzzle.transform.position);
+        BulletCasingsEffect.Emit(1);
+        ShootTrailEffect.Emit(1);
 
         RaycastHit hit;
         if (Physics.Raycast(Muzzle.transform.position, GetFireDirection(), out hit, WeaponData.range, LayerMask))
