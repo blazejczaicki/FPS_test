@@ -70,6 +70,8 @@ public class Gun : Weapon
             {
                 OnHit(hit.point, ObjectPhysicalMaterials.None);
             }
+
+            GameSceneContext.HitEffectsSpawner.SpawnEffect(hit.point, hit.normal);
         }
     }
 
