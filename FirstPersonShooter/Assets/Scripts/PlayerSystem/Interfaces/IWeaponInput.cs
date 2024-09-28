@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public interface IWeaponInput
 {
@@ -9,4 +6,5 @@ public interface IWeaponInput
     public Action FireReleased { get; set; }
 
     public Action ChangeWeapon { get; set; }
+    public Action AimWeapon { get; set; }
 }

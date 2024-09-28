@@ -359,7 +359,8 @@ MonoBehaviour:
   <RecoilEffect>k__BackingField: {fileID: 4075615237491945827}
   <BulletCasingsEffect>k__BackingField: {fileID: 1244598017968307577}
   <ShootTrailEffect>k__BackingField: {fileID: 6877774411557996447}
-  <HitEffectsSpawner>k__BackingField: {fileID: 0}
+  _maxRecoilTime: 4
+  _recoilSize: 0.08
 --- !u!114 &1191242060661215703
 MonoBehaviour:
   m_ObjectHideFlags: 0

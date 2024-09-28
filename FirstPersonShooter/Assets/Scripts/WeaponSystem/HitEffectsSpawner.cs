@@ -21,7 +21,6 @@ public class HitEffectsSpawner : PoolingBase<HitEffect>
 
     protected override HitEffect CreateNewPoolObject()
     {
-        Debug.Log("Create");
         HitEffect hitEffect = Instantiate(_effectPrefab, _positionEffect, Quaternion.identity, transform);
         hitEffect.OnRelease += ReleaseEffect;
         hitEffect.transform.forward = _normalEffect;
@@ -31,7 +30,6 @@ public class HitEffectsSpawner : PoolingBase<HitEffect>
 
     protected override void OnGetPoolObject(HitEffect poolObject)
     {
-        Debug.Log("Get");
         poolObject.gameObject.SetActive(true);
         poolObject.transform.position = _positionEffect;
         poolObject.transform.forward = _normalEffect;
@@ -40,7 +38,6 @@ public class HitEffectsSpawner : PoolingBase<HitEffect>
 
     protected override void OnReleasePoolObject(HitEffect poolObject)
     {
-        Debug.Log("Release");
         poolObject.gameObject.SetActive(false);
     }
 

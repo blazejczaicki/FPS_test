@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,6 +31,7 @@ public class PlayerInputAdapter : IMovementInput, IWeaponInput
     public Action RunReleased { get; set; }
     public Action CrouchPressed { get; set; }
     public Action CrouchReleased { get; set; }
+    public Action AimWeapon { get; set; }
 
     public PlayerInputAdapter(Controls controls)
     {
@@ -50,6 +48,7 @@ public class PlayerInputAdapter : IMovementInput, IWeaponInput
         _controls.Player.Fire.started += OnFire;
         _controls.Player.Fire.canceled += OnFire;
         _controls.Player.ChangeWeapon.performed += OnChangeGun;
+        _controls.Player.Aim.started += OnAim;
     }
 
     ~PlayerInputAdapter()
@@ -63,6 +62,7 @@ public class PlayerInputAdapter : IMovementInput, IWeaponInput
         _controls.Player.Run.started -= OnRun;
         _controls.Player.Run.canceled -= OnRun;
         _controls.Player.ChangeWeapon.performed -= OnChangeGun;
+        _controls.Player.Aim.started -= OnAim;
     }
 
     private void OnJump(InputAction.CallbackContext context)
@@ -87,9 +87,17 @@ public class PlayerInputAdapter : IMovementInput, IWeaponInput
 
     private void OnChangeGun(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
         {
             ChangeWeapon?.Invoke();
+        }
+    }
+
+    private void OnAim(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            AimWeapon?.Invoke();
         }
     }
 

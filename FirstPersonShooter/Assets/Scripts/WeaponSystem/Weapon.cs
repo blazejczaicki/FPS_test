@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [field: SerializeField] protected WeaponData WeaponData {get; private set;}
+    [field: SerializeField] protected WeaponData WeaponData { get; private set; }
 
     public IWeaponInput WeaponInput { get; set; }
     public HitData HitData { get; set; }
@@ -14,10 +12,12 @@ public abstract class Weapon : MonoBehaviour
 
     public event Action<Vector3, ObjectPhysicalMaterials> Hit;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        HitData=new HitData();
+        HitData = new HitData();
     }
+
+    public abstract void SetEffects(bool isOn);
 
     public abstract void OnEnter();
     public abstract void OnUpdate();
