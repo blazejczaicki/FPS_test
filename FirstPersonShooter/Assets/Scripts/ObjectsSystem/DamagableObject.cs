@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class DamagableObject : MonoBehaviour
 {
-    [field: SerializeField] public DamagableObjectData DamagableObjectData {  get; private set; }
+    [field: SerializeField] public DamagableObjectData DamagableObjectData { get; private set; }
 
     public event Action<DamagableObject> ObjectDestroy;
     public event Action<DamagableObject> ObjectHit;
@@ -13,7 +13,7 @@ public abstract class DamagableObject : MonoBehaviour
     public int CurrentHealth { get; set; }
     public bool IsDestroyed { get; set; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         CurrentHealth = DamagableObjectData.health;
         IsDestroyed = false;

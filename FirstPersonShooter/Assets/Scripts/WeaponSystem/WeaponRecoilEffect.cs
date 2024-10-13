@@ -22,6 +22,5 @@ public class WeaponRecoilEffect : MonoBehaviour
     public void Recoil()
     {
         _targetRot -= new Vector3(_recoilX, Random.Range(-_recoilY, _recoilY), Random.Range(-_recoilZ, _recoilZ));
-        Debug.Log(_targetRot);
     }
 }
