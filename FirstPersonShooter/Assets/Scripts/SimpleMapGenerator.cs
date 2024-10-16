@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 
@@ -18,12 +19,13 @@ public class SimpleMapGenerator : MonoBehaviour
     [SerializeField] private RoomSetup[] _roomsPrefabs;
     [SerializeField] private RoomSetup _roomsConnectionPrefab;
 
-
+    private NavMeshSurface _navMeshSurface;
     private Dictionary<Vector2Int, Room> _rooms;
 
     private void Awake()
     {
         _rooms = new Dictionary<Vector2Int, Room>();
+        _navMeshSurface = GetComponent<NavMeshSurface>();
     }
 
     private void Start()
@@ -129,7 +131,7 @@ public class SimpleMapGenerator : MonoBehaviour
 
     private void GenerateNavMesh()
     {
-        _rooms.First().Value.GenerateNavmesh();
+        _navMeshSurface.BuildNavMesh();
     }
 
     private void SpawnEnemies()

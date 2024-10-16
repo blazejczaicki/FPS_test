@@ -5,17 +5,11 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField] private int _cellSize = 40;
-    [SerializeField] private NavMeshSurface[] _surfacesNM;
     [SerializeField] private SimpleSpawner _simpleSpawner;
 
     [field: SerializeField] public RoomNeighbours[] Entrances { get; set; }
     [field: SerializeField] public bool IsEnd { get; set; }
     [field: SerializeField] public bool IsConnection { get; set; }
-
-    public void GenerateNavmesh()
-    {
-        _surfacesNM[0].BuildNavMesh();
-    }
 
     public void SpawnEnemies()
     {
